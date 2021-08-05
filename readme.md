@@ -36,7 +36,22 @@ echo $categories->first()->products_count // 5
 echo $categories->first()->description->name // Electronics
 ```
 
-What about options and option values? 
+Options and values 
+
+```php
+use App\Models\Catalog\Option\Option;
+
+$options = Option::with('description', 'values.description')->get();
+
+foreach ($options as $option) {
+    echo $option->description->name; // Color
+    foreach ($option->values as $value) {
+        $value->description->name; // Dark
+    }
+}
+```
+
+What about product options and option values? 
 
 ```php
 use App\Models\Catalog\Product\Product;
