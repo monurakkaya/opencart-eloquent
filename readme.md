@@ -1,9 +1,9 @@
-#OPENCART-ELOQUENT
+# OPENCART-ELOQUENT
 
 Yet another OpenCart database package for lazy laravel developers.
-I wrote this package to use my OpenCart extensions. It does not replace whole opencart models with eloquent models. It just gives you the opportunity to use eloquent ORM while querying
+I wrote this package to use my OpenCart extensions. It does not replace whole opencart models with eloquent models. It just gives you the opportunity to use eloquent ORM flexibility while querying
 
-###INSTALLATION
+### INSTALLATION
 1. First, install the package via composer:
     ```shell
     composer require monurakkaya/opencart-eloquent
@@ -15,7 +15,7 @@ I wrote this package to use my OpenCart extensions. It does not replace whole op
 3. Go to your admin panel and refresh modifications.
 
 
-###EXAMPLES
+### EXAMPLES
 To get categories count which have products in it, just type:
 ```php
 use App\Models\Catalog\Category\Category;
@@ -82,7 +82,7 @@ Easy right? :)
 This project will be maintained as long as I use continue OpenCart.
 
 
-##OCMOD SUPPORT
+### OCMOD SUPPORT
 You can easily modify original model files without touching any vendor file. 
 
 Each Model has a comment line //ocmod at the end. just search and add after whatever you want.
