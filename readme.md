@@ -94,7 +94,7 @@ $this->response->setOutput($this->load->view('extension/module/some_of_my_extens
 
 Easy right? :) 
 
-This project will be maintained as long as I use continue OpenCart.
+This project will be maintained as long as I continue to use OpenCart.
 
 
 ### OCMOD SUPPORT
