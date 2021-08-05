@@ -1,0 +1,36 @@
+{
+    "name": "monurakkaya/opencart-eloquent",
+    "description": "Eloquent support for OpenCart models",
+    "type": "project",
+    "keywords": ["laravel opencart", "laravel-opencart", "eloquent-opencart", "eloquent opencart"],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/database": "^5.8",
+        "illuminate/pagination": "^5.8",
+        "illuminate/support": "^5.8"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": ["upload/app"]
+        }
+    },
+    "authors": [
+        {
+            "name": "Mehmet Onur Akkaya",
+            "email": "monurakkaya@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "support": {
+        "issues": "https://github.com/monurakkaya/opencart-eloquent/issues",
+        "source": "https://github.com/monurakkaya/opencart-eloquent"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

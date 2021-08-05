@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<modification>
+    <name>Opencart Eloquent</name>
+    <author>monurakkaya</author>
+    <code>opencart_eloquent</code>
+    <version>0.0.1</version>
+    <file path="upload/system/framework.php">
+        <operation>
+            <search><![CDATA[// Session]]></search>
+            <add position="before"><![CDATA[[
+$capsule = new Illuminate\Database\Capsule\Manager();
+$capsule->addConnection([
+    "driver" => "mysql",
+    "host" => DB_HOSTNAME,
+    "database" => DB_DATABASE,
+    "username" => DB_USERNAME,
+    "password" => DB_PASSWORD
+]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+$helpers = new \App\Support\Helper();
+$helpers->setRegistry($registry);
+]]></add>
+        </operation>
+    </file>
+    <file path="admin/controller/marketplace/modification.php">
+        <operation>
+            <search><![CDATA[if ($path) {]]></search>
+            <add position="before"><![CDATA[
+$dir_app = DIR_STORAGE . 'vendor/monurakkaya/opencart-eloquent/src/';
+if (substr($file, 0, 3) == 'app') {
+    $path =  $dir_app . $file;
+}
+]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[if (substr($file, 0, strlen(DIR_SYSTEM)) == DIR_SYSTEM) {]]></search>
+            <add position="before"><![CDATA[
+if (substr($file, 0, strlen($dir_app)) == $dir_app) {
+    $key = substr($file, strlen($dir_app));
+}]]></add>
+        </operation>
+    </file>
+</modification>
