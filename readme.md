@@ -80,7 +80,8 @@ $manufacturers = Manufacturer::with('description')
         'page', 
         $this->request->get['page']
      );
-     
+ 
+//below lines belongs to opencart logic.  
 $pagination = new \Pagination();
 $pagination->total = $manufacturers->total();
 $pagination->page = $manufacturers->currentPage();
@@ -100,9 +101,11 @@ This project will be maintained as long as I continue to use OpenCart.
 ### OCMOD SUPPORT
 You can easily modify original model files without touching any vendor file. 
 
-Each Model has a comment line //ocmod at the end. just search and add after whatever you want.
+Each Model has comment lines `//trait` at the beginning and `//ocmod` at the end. just search and add after whatever you want.
 
-***with below code you can use name property as mutator so instead `$product->description->name` you can use `$product->name`
+
+with below code you can use name property as mutator so instead `$product->description->name` you can use `$product->name`:
+
 ```xml
 <file path="app/Models/Product/Product.php">
     <operation>
@@ -116,6 +119,44 @@ Each Model has a comment line //ocmod at the end. just search and add after what
         </add>
     </operation>
 </file>
+```
+
+**RESULT** 
+```
+$product->description->name // Ibanez RG35EX Black
+$product->name              // Ibanez RG35EX Black
+```
+
+with below code you can do your modification with a trait. 
+
+```php
+<?php
+namespace App\Models\Extension\Payment\MyModule\Traits\HasPrice;
+
+trait HasPrice {
+    public function getDiscountedPrice($percent = 20) {
+        return $this->price * (100 - $percent) / 100;
+    }
+}
+```
+
+```xml
+<file path="app/Models/Product/Product.php">
+    <operation>
+        <search><![CDATA[//trait]]></search>
+        <add position="after">
+            <![CDATA[
+            use \App\Models\Extension\Payment\MyModule\Traits\HasPrice;
+            ]]>
+        </add>
+    </operation>
+</file>
+```
+**RESULT**
+```
+$product->price // 50
+$product->getDiscountedPrice() // 40
+$product->getDiscountedPrice(10) // 45
 ```
 
 
