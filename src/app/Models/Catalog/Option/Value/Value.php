@@ -20,13 +20,13 @@ class Value extends Model
 
     public function description()
     {
-        return $this->hasOne(Description::class, 'option_id')
+        return $this->hasOne(Description::class, 'option_value_id', 'option_value_id')
             ->where('language_id', Helper::session('config_language_id', 1));
     }
 
     public function descriptions()
     {
-        return $this->hasMany(Description::class, 'option_id');
+        return $this->hasMany(Description::class, 'option_value_id', 'option_value_id');
     }
 
     //ocmod
