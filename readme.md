@@ -104,7 +104,9 @@ This project will be maintained as long as I continue to use OpenCart.
 
 just put your models in your upload/app directory. 
 Recommended way is follow opencart directory structure like:  
-`app/Models/Extension/Module/ProductVideo.php`
+`upload/admin/controller/extension/module/product_video.php`
+`upload/admin/view/template/extension/module/product_video.twig`
+`upload/app/Models/Extension/Module/ProductVideo.php`
 
 ```php
 <?php
