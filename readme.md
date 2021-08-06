@@ -20,6 +20,7 @@ To get categories count which have products in it, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
+$this->load->eloquent(Category::class);
 $categories_count = Category::whereHas('products')
     ->with('description')
     ->count();
@@ -29,6 +30,7 @@ To get categories with products count, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
+$this->load->eloquent(Category::class);
 $categories = Category::with('description')
     ->withCount('products')->get();
 
@@ -41,6 +43,7 @@ Options and values
 ```php
 use App\Models\Catalog\Option\Option;
 
+$this->load->eloquent(Option::class);
 $options = Option::with('description', 'values.description')->get();
 
 foreach ($options as $option) {
@@ -56,6 +59,7 @@ What about product options and option values?
 ```php
 use App\Models\Catalog\Product\Product;
 
+$this->load->eloquent(Product::class);
 $product = Product::with('options.values')->find(5);
 
 foreach($product->options as $option) {
@@ -107,7 +111,7 @@ Each Model has comment lines `//trait` at the beginning and `//ocmod` at the end
 with below code you can use name property as mutator so instead `$product->description->name` you can use `$product->name`:
 
 ```xml
-<file path="app/Models/Product/Product.php">
+<file path="app/Models/Catalog/Product/Product.php">
     <operation>
         <search><![CDATA[//ocmod]]></search>
         <add position="after">
@@ -141,7 +145,7 @@ trait HasPrice {
 ```
 
 ```xml
-<file path="app/Models/Product/Product.php">
+<file path="app/Models/Catalog/Product/Product.php">
     <operation>
         <search><![CDATA[//trait]]></search>
         <add position="after">
