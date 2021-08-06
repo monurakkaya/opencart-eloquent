@@ -10,7 +10,7 @@ I wrote this package to use my OpenCart extensions. It does not replace whole op
     ```
 2. Then copy ocmod file to your system directory
     ```shell
-    cp storage/vendor/monurakkaya/opencart-eloquent/src/*.xml upload/system/library
+    cp storage/vendor/monurakkaya/opencart-eloquent/src/*.xml upload/system
     ```
 3. Go to your admin panel and refresh modifications.
 
