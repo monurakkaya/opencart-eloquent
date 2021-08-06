@@ -1,7 +1,7 @@
 # OPENCART-ELOQUENT
 
 Yet another OpenCart database package for lazy laravel developers.
-I wrote this package to use my OpenCart extensions. It does not replace whole opencart models with eloquent models. It just gives you the opportunity to use eloquent ORM flexibility while querying
+I wrote this package to use with my OpenCart extensions. It does not replace whole opencart models with eloquent models. It just gives you the opportunity to use eloquent ORM flexibility while querying
 
 ### INSTALLATION
 1. First, install the package via composer:
