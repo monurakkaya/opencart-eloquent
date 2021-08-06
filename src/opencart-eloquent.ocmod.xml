@@ -46,19 +46,4 @@
 ]]></add>
         </operation>
     </file>
-    <file path="system/engine/loader.php">
-        <operation>
-            <search><![CDATA[protected function callback($registry, $route) {]]></search>
-            <add position="before"><![CDATA[public function eloquent($class)
-    {
-        $filename = str_replace('\\', '/', $class). '.php';
-        $filename = DIR_MODIFICATION . '/' . str_replace('App/', 'app/', $filename);
-        if (is_file($filename)) {
-            include_once ($filename);
-        } else {
-            include_once (DIR_STORAGE.'/vendor/monurakkaya/opencart-eloquent/src/'. $class . '.php');
-        }
-    }]]></add>
-        </operation>
-    </file>
 </modification>

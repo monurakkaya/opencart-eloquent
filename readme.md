@@ -20,7 +20,6 @@ To get categories count which have products in it, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
-$this->load->eloquent(Category::class);
 $categories_count = Category::whereHas('products')
     ->with('description')
     ->count();
@@ -30,7 +29,6 @@ To get categories with products count, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
-$this->load->eloquent(Category::class);
 $categories = Category::with('description')
     ->withCount('products')->get();
 
@@ -43,7 +41,6 @@ Options and values
 ```php
 use App\Models\Catalog\Option\Option;
 
-$this->load->eloquent(Option::class);
 $options = Option::with('description', 'values.description')->get();
 
 foreach ($options as $option) {
@@ -59,7 +56,6 @@ What about product options and option values?
 ```php
 use App\Models\Catalog\Product\Product;
 
-$this->load->eloquent(Product::class);
 $product = Product::with('options.values')->find(5);
 
 foreach($product->options as $option) {
@@ -135,7 +131,7 @@ with below code you can do your modification with a trait.
 
 ```php
 <?php
-namespace App\Models\Extension\Payment\MyModule\Traits\HasPrice;
+namespace App\Traits\Extension\Payment\MyModule\Traits\HasPrice;
 
 trait HasPrice {
     public function getDiscountedPrice($percent = 20) {
@@ -150,7 +146,7 @@ trait HasPrice {
         <search><![CDATA[//trait]]></search>
         <add position="after">
             <![CDATA[
-            use \App\Models\Extension\Payment\MyModule\Traits\HasPrice;
+            use \App\Traits\Extension\Payment\MyModule\Traits\HasPrice;
             ]]>
         </add>
     </operation>
