@@ -7,6 +7,7 @@ use App\Models\Model;
 
 class Option extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'product_option';
     protected $primaryKey = 'product_option_id';
 

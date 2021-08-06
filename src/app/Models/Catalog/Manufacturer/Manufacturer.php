@@ -9,6 +9,7 @@ use App\Models\Model;
 
 class Manufacturer extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'manufacturer';
 
     protected $primaryKey = 'manufacturer_id';

@@ -12,6 +12,7 @@ use App\Support\Helper;
 
 class Product extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'product';
 
     protected $primaryKey = 'product_id';

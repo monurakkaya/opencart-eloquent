@@ -8,6 +8,7 @@ use App\Support\Helper;
 
 class Value extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'option_value';
 
     protected $primaryKey = 'option_value_id';

@@ -10,6 +10,7 @@ use App\Support\Helper;
 
 class Category extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'category';
 
     protected $primaryKey = 'category_id';

@@ -7,6 +7,7 @@ use App\Models\Model;
 
 class Description extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'manufacturer_description';
 
     public function manufacturer()

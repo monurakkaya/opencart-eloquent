@@ -10,6 +10,7 @@ use App\Support\Helper;
 
 class Option extends Model
 {
+    //trait
 
     protected $table = DB_PREFIX.'option';
 

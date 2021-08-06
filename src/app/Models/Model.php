@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Models;
+namespace App\Modelsz;
 
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
+    //trait
     const CREATED_AT = 'date_added';
     const UPDATED_AT = 'date_modified';
 

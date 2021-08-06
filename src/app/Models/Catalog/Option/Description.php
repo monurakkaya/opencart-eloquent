@@ -7,6 +7,7 @@ use App\Models\Model;
 
 class Description extends Model
 {
+    //trait
     protected $table = DB_PREFIX.'option_description';
 
     protected $primaryKey = 'option_description_id';
