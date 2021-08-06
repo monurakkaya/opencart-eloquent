@@ -98,8 +98,44 @@ Easy right? :)
 This project will be maintained as long as I continue to use OpenCart.
 
 
+
+
+### WRITING YOUR EXTENSION MODELS
+
+just put your models in your upload/app directory. 
+Recommended way is follow opencart directory structure like:  
+`app/Models/Extension/Module/ProductVideo.php`
+
+```php
+<?php
+namespace App\Models\Extension\Module
+
+use App\Models\Model;
+use App\Models\Catalog\Product\Product;
+
+class ProductVideo extends Model {
+    private $table = DB_PREFIX.'product_video';
+    private $primaryKey = 'product_video_id';
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id') 
+    }
+}
+```
+
+then in your module controller just call:
+
+```php
+use App\Models\Extension\Module\ProductVideo;
+
+$video = ProductVideo::with('product')->first();
+$video->product // Product object
+```
+
+
 ### OCMOD SUPPORT
-You can easily modify original model files without touching any vendor file. 
+You can easily modify original model files without touching any vendor file.
 
 Each Model has comment lines `//trait` at the beginning and `//ocmod` at the end. just search and add after whatever you want.
 
@@ -121,13 +157,13 @@ with below code you can use name property as mutator so instead `$product->descr
 </file>
 ```
 
-**RESULT** 
+**RESULT**
 ```
 $product->description->name // Ibanez RG35EX Black
 $product->name              // Ibanez RG35EX Black
 ```
 
-with below code you can do your modification with a trait. 
+with below code you can do your modification with a trait.
 
 ```php
 <?php
@@ -159,5 +195,27 @@ $product->getDiscountedPrice() // 40
 $product->getDiscountedPrice(10) // 45
 ```
 
+with below code you can create relation between opencart product model and your extension's model 
+
+```xml
+<file path="app/Models/Catalog/Product/Product.php">
+    <operation>
+        <search><![CDATA[//ocmod]]></search>
+        <add position="after">
+            <![CDATA[
+            public function videos() {
+                return $this->hasMany(\App\Models\Extension\Module\ProductVideo::class, 'product_id', 'product_id');
+            }
+            ]]>
+        </add>
+    </operation>
+</file>
+```
+
+**RESULT**
+```
+$product = Product::with('videos')->first();
+$product->videos()->first(); // Video model
+```
 
 modification file will be stored to `storage/modification/app/Models/Product/Product.php`
