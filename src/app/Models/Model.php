@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Modelsz;
+namespace App\Models;
 
 
 class Model extends \Illuminate\Database\Eloquent\Model
