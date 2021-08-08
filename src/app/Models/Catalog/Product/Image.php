@@ -17,7 +17,7 @@ class Image extends Model
 
     public function getFullUrl()
     {
-        return DIR_CATALOG.$this->image;
+        return HTTPS_CATALOG.$this->image;
     }
 
     //ocmod
