@@ -13,6 +13,8 @@ class Value extends Model
 
     protected $primaryKey = 'option_value_id';
 
+    public $timestamps = false;
+
     public function option()
     {
         return $this->belongsTo(Option::class, 'option_id', 'option_id');

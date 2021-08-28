@@ -16,6 +16,8 @@ class Option extends Model
 
     protected $primaryKey = 'option_id';
 
+    public $timestamps = false;
+
     public function description()
     {
         return $this->hasOne(Description::class, 'option_id')

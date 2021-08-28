@@ -9,7 +9,10 @@ class Description extends Model
 {
     //trait
     protected $table = DB_PREFIX.'option_value_description';
+
     protected $primaryKey = 'option_value_description_id';
+
+    public $timestamps = false;
 
     public function value()
     {

@@ -9,7 +9,10 @@ class Value extends Model
 {
     //trait
     protected $table = DB_PREFIX.'product_option_value';
+
     protected $primaryKey = 'product_option_value_id';
+
+    public $timestamps = false;
 
     public function value()
     {
