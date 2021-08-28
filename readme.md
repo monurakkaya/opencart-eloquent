@@ -5,13 +5,13 @@ I wrote this package to use with my OpenCart extensions. It does not replace who
 
 ### INSTALLATION
 1. First, install the package via composer:
-    ```shell
-    composer require monurakkaya/opencart-eloquent
-    ```
+```shell
+composer require monurakkaya/opencart-eloquent
+```
 2. Then copy ocmod file to your system directory
-    ```shell
-    cp storage/vendor/monurakkaya/opencart-eloquent/src/*.xml upload/system
-    ```
+```shell
+cp storage/vendor/monurakkaya/opencart-eloquent/src/*.xml upload/system
+```
 3. Go to your admin panel and refresh modifications.
 
 
@@ -20,17 +20,14 @@ To get categories count which have products in it, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
-$categories_count = Category::whereHas('products')
-    ->with('description')
-    ->count();
+$categories_count = Category::whereHas('products')->count();
 ```
 
 To get categories with products count, just type:
 ```php
 use App\Models\Catalog\Category\Category;
 
-$categories = Category::with('description')
-    ->withCount('products')->get();
+$categories = Category::withCount('products')->get();
 
 echo $categories->first()->products_count // 5
 echo $categories->first()->description->name // Electronics
@@ -217,7 +214,7 @@ with below code you can create relation between opencart product model and your 
 **RESULT**
 ```
 $product = Product::with('videos')->first();
-$product->videos()->first(); // Video model
+$product->videos->first(); // Video model
 ```
 
 modification file will be stored to `storage/modification/app/Models/Product/Product.php`
