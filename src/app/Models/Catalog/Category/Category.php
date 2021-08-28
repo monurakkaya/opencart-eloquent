@@ -7,9 +7,11 @@ namespace App\Models\Catalog\Category;
 use App\Models\Catalog\Product\Product;
 use App\Models\Model;
 use App\Support\Helper;
+use App\Traits\HasDescription;
 
 class Category extends Model
 {
+    use HasDescription;
     //trait
     protected $table = DB_PREFIX.'category';
 

@@ -9,10 +9,13 @@ use App\Models\Catalog\Manufacturer\Manufacturer;
 use App\Models\Catalog\Product\Option\Option;
 use App\Models\Model;
 use App\Support\Helper;
+use App\Traits\HasDescription;
 
 class Product extends Model
 {
     //trait
+    use HasDescription;
+
     protected $table = DB_PREFIX.'product';
 
     protected $primaryKey = 'product_id';
